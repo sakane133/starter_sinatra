@@ -1,0 +1,34 @@
+<h1>Edit 🍺</h1>
+<h1>🍺 <%=@beer.name %>🍺</h1>
+<form action="/beers/<%=@beer.id%>" method="POST">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="<%=@beer.name%>">
+
+  <label for="description">Description:</label>
+  <input type="text" name="description" value="<%=@beer.description%>">
+
+  <label for="brewery_id">Brewery:</label>
+  <select name="brewery_id">
+    <% @breweries.each do |brew| %>
+      <option 
+        <%= 'selected' if @beer.brewery == brew %> 
+        value="<%=brew.id%>"><%= brew.name%></option>
+    <% end %>
+  </select>
+
+  <br>
+  <p>Flavors:</p>
+  <% @flavors.each do |flavor| %>
+    <label for="flavors[<%=flavor.name%>]"><%=flavor.name%></label>
+      <input 
+        <%= 'checked' if @beer.flavors.include?(flavor) %>
+        type="checkbox" 
+        name="flavors[<%=flavor.name%>]" 
+        value="<%=flavor.id%>"
+      >
+    <br>
+  <% end %>
+
+  <input type="submit" value="Update Beer">
+</form>

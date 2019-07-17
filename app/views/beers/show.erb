@@ -1,5 +1,9 @@
-<h1><%=@beer.name%></h1>
-
+<h1>🍺<%=@beer.name%>🍺</h1>
+<h2>
+   <a href="/breweries/<%=@beer.brewery.id %>">
+      <%=@beer.brewery.name  %> Brewery
+   </a>
+</h2>
 
 <p> Description: <%= @beer.description %> </p>
  <br>
@@ -7,5 +11,12 @@
     <%= flavor.name %> <br>
     <% end %> 
     </p>
+
+<form action="/beers/<%=@beer.id%>" method="POST">
+   <input type="hidden" name="_method" value="delete">
+   <input type="submit" value="Delete Beer 🍺">
+</form>
+
+<a href="/beers/<%=@beer.id%>/edit">EDIT THIS BEERRRR!!! 🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺🍺</a>
 
   

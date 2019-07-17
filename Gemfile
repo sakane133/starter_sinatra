@@ -1,12 +1,14 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 
 gem 'activerecord'
-gem 'sinatra-activerecord'
-gem 'rake'
-gem 'sqlite3'
+gem 'faker'
 gem 'pry'
-gem 'require_all'
 gem 'rack'
+gem 'rake'
+gem 'require_all'
 gem 'shotgun'
 gem 'sinatra'
-gem 'faker'
+gem 'sinatra-activerecord'
+gem 'sqlite3'

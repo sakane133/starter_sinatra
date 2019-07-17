@@ -1,0 +1,26 @@
+<h1>Create a New Beer</h1>
+
+<form action="/beers" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" name="name">
+
+  <label for="description">Description:</label>
+  <input type="text" name="description">
+
+  <label for="brewery_id">Brewery:</label>
+  <select name="brewery_id">
+    <% @breweries.each do |brew| %>
+      <option value="<%=brew.id%>"><%= brew.name%></option>
+    <% end %>
+  </select>
+
+  <br>
+  <p>Flavors:</p>
+  <% @flavors.each do |flavor| %>
+    <label for="flavors[<%=flavor.name%>]"><%=flavor.name%></label>
+    <input type="checkbox" name="flavors[<%=flavor.name%>]" value="<%=flavor.id%>">
+    <br>
+  <% end %>
+
+  <input type="submit" value="Submit">
+</form>
