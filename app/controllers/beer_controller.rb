@@ -16,9 +16,14 @@ class BeerController < Sinatra::Base
   end
 
   get '/beers/:id' do
-    @beer = Beer.find(params[:id])
-    erb :show
+    # binding.pry
+    @beer = Beer.find_by(id: params[:id])
+    if @beer == nil
+      redirect '/beers'
+    else 
+      erb :show 
   end
+end
 
   post '/beers' do
     beer = Beer.create(name: params[:name], description: params[:description], brewery_id: params[:brewery_id])
@@ -46,6 +51,7 @@ class BeerController < Sinatra::Base
   end
 
   delete '/beers/:id' do
+    # binding.pry
     beer = Beer.find(params[:id])
     beer.destroy
     redirect '/beers'
